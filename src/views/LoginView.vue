@@ -3,25 +3,8 @@
 	<div class="login_con">
 		<div class="login_box">
 			<LogoCom />
-			<div class="input_tag">
-				<label for="email_input"> 아이디 </label>
-				<input
-					type="email"
-					id="email_input"
-					name="email"
-					v-model="member.email"
-				/>
-			</div>
-
-			<div class="input_tag">
-				<label for="password_input"> 비밀번호 </label>
-				<input
-					type="password"
-					id="password_input"
-					name="password"
-					v-model="member.password"
-				/>
-			</div>
+			<InputText v-model="member.email" :text_tag="text_tag" />
+			<InputPassword v-model="member.password" :password_tag="password_tag" />
 
 			<button type="button" @click="login">로그인</button>
 			<RouterLink to="/member/join">회원가입</RouterLink>
@@ -35,9 +18,13 @@ import { reactive } from 'vue';
 import HeaderCom from '@/components/MainHeader.vue';
 import FooterCom from '@/components/MainFooter.vue';
 import LogoCom from '@/components/LogoLayout.vue';
+import InputText from '@/components/InputText.vue';
+import InputPassword from '@/components/InputPassword.vue';
 import { RouterLink } from 'vue-router';
 
 const reg_chk = /^\s+|\s+$/g;
+const text_tag = '아이디';
+const password_tag = '비밀번호';
 const member = reactive({
 	email: '',
 	password: '',
@@ -71,30 +58,7 @@ function login() {
 	flex-direction: column;
 	padding: 40px 0;
 }
-.input_tag {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: 50px;
-}
-.input_tag label {
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	width: 20%;
-	padding-right: 15px;
-	font-weight: bold;
-}
-.input_tag input {
-	width: 60%;
-	border: 1px solid #e2e2e2;
-	border-radius: 10px;
-	height: 40px;
-	padding-left: 10px;
-	font-size: 16px;
-	font-weight: bold;
-}
+
 .login_box button {
 	margin: 30px 0;
 	border: 1px solid #e2e2e2;
