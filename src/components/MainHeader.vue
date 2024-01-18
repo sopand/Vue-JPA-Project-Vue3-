@@ -20,6 +20,23 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import LogoCom from './LogoLayout.vue';
+import store from '@/modules/loginStore';
+import router from '@/router';
+import axios from 'axios';
+function logout() {
+	axios
+		.post('/api/member/logout')
+		.then(({ data }) => {
+			if (data.success) {
+				sessionStorage.removeItem('id');
+				store.commit('setAccount', 0);
+				router.push({ path: '/login' });
+			}
+		})
+		.catch(error => {
+			console.error(error);
+		});
+}
 </script>
 
 <style scoped>
