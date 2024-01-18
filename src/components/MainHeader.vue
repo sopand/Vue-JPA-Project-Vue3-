@@ -1,6 +1,7 @@
 <template>
 	<div class="tag_box">
-		<RouterLink to="/login">Login</RouterLink>
+		<RouterLink to="/login" v-if="!$store.state.account.id">Login</RouterLink>
+		<button type="button" @click="logout" v-else>Logout</button>
 	</div>
 	<div class="header_box">
 		<LogoCom />

@@ -21,7 +21,8 @@ import InputText from '@/components/InputText.vue';
 import InputPassword from '@/components/InputPassword.vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
 import { RouterLink } from 'vue-router';
-
+import store from '@/modules/loginStore';
+import axios from 'axios';
 const reg_chk = /^\s+|\s+$/g;
 const member = reactive({
 	email: '',
@@ -37,6 +38,19 @@ function login() {
 		alert('비밀번호를 입력해주세요');
 		return;
 	}
+
+	axios
+		.post('/api/member/login', member)
+		.then(({ data }) => {
+			if (data.success) {
+				alert(data.message);
+				store.commit('setAccount', data.data);
+				sessionStorage.setItem('id', data.data);
+			}
+		})
+		.catch(error => {
+			alert(error.response.data.message);
+		});
 }
 </script>
 <style>

@@ -20,8 +20,10 @@ import InputText from '@/components/InputText.vue';
 import InputPass from '@/components/InputPassword.vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
 import { reactive } from 'vue';
+import router from '@/router';
 import axios from 'axios';
 
+const reg_chk = /^\s+|\s+$/g;
 const member = reactive({
 	email: '',
 	password: '',
@@ -29,13 +31,29 @@ const member = reactive({
 });
 
 function join() {
+	if (member.email.replace(reg_chk, '') == '') {
+		alert('이메일을 입력해주세요');
+		return;
+	}
+
+	if (member.password.replace(reg_chk, '') == '') {
+		alert('비밀번호를 입력해주세요');
+		return;
+	}
+	if (member.name.replace(reg_chk, '') == '') {
+		alert('별명 또는 성명을 입력해주세요');
+		return;
+	}
 	axios
 		.post('/api/member/join', member)
 		.then(({ data }) => {
-			console.log(data);
+			if (data.success) {
+				alert(data.message);
+				router.push({ path: '/login' });
+			}
 		})
 		.catch(error => {
-			console.error(error);
+			alert(error.response.data.message);
 		});
 }
 </script>
