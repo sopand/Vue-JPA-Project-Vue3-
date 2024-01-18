@@ -1,9 +1,10 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue';
+import HeaderCom from '@/components/Header.vue';
+import FooterCom from '@/components/Footer.vue';
 </script>
 
 <template>
-	<main>
-		<TheWelcome />
-	</main>
+	<HeaderCom />
+	<main></main>
+	<FooterCom />
 </template>
