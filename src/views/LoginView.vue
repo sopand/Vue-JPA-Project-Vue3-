@@ -3,10 +3,9 @@
 	<div class="login_con">
 		<div class="login_box">
 			<LogoCom />
-			<InputText v-model="member.email" :text_tag="text_tag" />
-			<InputPassword v-model="member.password" :password_tag="password_tag" />
-
-			<button type="button" @click="login">로그인</button>
+			<InputText v-model="member.email" :text_tag="'아이디'" />
+			<InputPassword v-model="member.password" :password_tag="'비밀번호'" />
+			<PrimaryButton @click="login" :button_tag="'로그인'" />
 			<RouterLink to="/member/join">회원가입</RouterLink>
 		</div>
 	</div>
@@ -20,11 +19,10 @@ import FooterCom from '@/components/MainFooter.vue';
 import LogoCom from '@/components/LogoLayout.vue';
 import InputText from '@/components/InputText.vue';
 import InputPassword from '@/components/InputPassword.vue';
+import PrimaryButton from '@/components/PrimaryButton.vue';
 import { RouterLink } from 'vue-router';
 
 const reg_chk = /^\s+|\s+$/g;
-const text_tag = '아이디';
-const password_tag = '비밀번호';
 const member = reactive({
 	email: '',
 	password: '',
@@ -59,12 +57,6 @@ function login() {
 	padding: 40px 0;
 }
 
-.login_box button {
-	margin: 30px 0;
-	border: 1px solid #e2e2e2;
-	background-color: #0000ff;
-}
-.login_box button,
 .login_box a {
 	width: 350px;
 	height: 40px;
@@ -72,8 +64,6 @@ function login() {
 	color: white;
 	font-size: 18px;
 	font-weight: bold;
-}
-.login_box a {
 	text-align: center;
 	border: 1px solid #e2e2e2;
 	background-color: #000000;
