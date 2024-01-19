@@ -2,8 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import LoginView from '@/views/LoginView.vue';
 import UserCreateView from '@/views/UserCreateView.vue';
-import loginStore from '@/modules/loginstore';
-
+import loginStore from '@/modules/loginStore';
 const routes = [
 	{
 		path: '/',
@@ -20,6 +19,11 @@ const routes = [
 		name: 'memberJoin',
 		component: UserCreateView,
 		//meta: { auth: true },
+	},
+	{
+		path: '/board/add',
+		name: 'boardAdd',
+		component: () => import('@/views/BoardCreateView.vue'),
 	},
 ];
 
