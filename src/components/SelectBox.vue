@@ -1,16 +1,22 @@
 <template>
-	<select>
-		<option v-for="listitem in list" v-bind:key="listitem">
+	<select v-model="this.value">
+		<option
+			v-for="listitem in list"
+			v-bind:key="listitem"
+			:value="listitem.value"
+			v-on:input="updateValue($event.target.value)"
+		>
 			{{ listitem.name }}
 		</option>
 	</select>
 </template>
 
-<script>
-export default {
-	props: {
-		list: [],
-	},
+<script setup>
+defineProps({
+	list: [],
+});
+const updateValue = value => {
+	this.$emit('input', value);
 };
 </script>
 

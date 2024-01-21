@@ -5,6 +5,7 @@
 			<InputText v-model="board.title" :text_tag="'제목'" />
 			<SelectBox v-model="board.type" :list="selectList"></SelectBox>
 			<TextEditor />
+			<PrimaryButton @click="addBoard" button_tag="등록" />
 		</div>
 	</div>
 
@@ -17,7 +18,12 @@ import FooterCom from '@/components/MainFooter.vue';
 import TextEditor from '@/components/TextEditor.vue';
 import InputText from '@/components/InputText.vue';
 import SelectBox from '@/components/SelectBox.vue';
+import PrimaryButton from '@/components/PrimaryButton.vue';
 import { reactive } from 'vue';
+
+function addBoard() {
+	alert(board.type);
+}
 const selectList = [
 	{
 		name: '공지사항',
@@ -49,5 +55,8 @@ const board = reactive({
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+}
+.board_con button {
+	margin: 100px 0;
 }
 </style>
