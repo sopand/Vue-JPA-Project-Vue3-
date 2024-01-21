@@ -3,7 +3,11 @@
 	<div class="board_con">
 		<div class="board_box">
 			<InputText v-model="board.title" :text_tag="'제목'" />
-			<SelectBox v-model="board.type" :list="selectList"></SelectBox>
+			<SelectBox
+				:list="selectList"
+				:label="'카테고리'"
+				@change="handleSelectChange"
+			></SelectBox>
 			<TextEditor />
 			<PrimaryButton @click="addBoard" button_tag="등록" />
 		</div>
@@ -23,6 +27,9 @@ import { reactive } from 'vue';
 
 function addBoard() {
 	alert(board.type);
+}
+function handleSelectChange(value) {
+	board.type = value;
 }
 const selectList = [
 	{
