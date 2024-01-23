@@ -1,8 +1,8 @@
 <template>
 	<div class="select_con">
-		<label>{{ label }}</label>
+		<label>{{ select_tag }}</label>
 		<select v-model="selectedOption" @change="handleChange">
-			<option selected>선택해주세요</option>
+			<option :value="null" disabled selected>선택해주세요</option>
 			<option v-for="listitem in list" :key="listitem" :value="listitem.value">
 				{{ listitem.name }}
 			</option>
@@ -15,7 +15,7 @@ import { ref } from 'vue';
 
 defineProps({
 	list: [],
-	label: String,
+	select_tag: String,
 });
 const emit = defineEmits(['change']);
 const selectedOption = ref(null);
