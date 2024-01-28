@@ -8,7 +8,7 @@
 				:select_tag="'카테고리'"
 				@change="handleSelectChange"
 			></SelectBox>
-			<TextEditor v-model="board.content" :label="'내용'" />
+			<TextEditor v-on:update:value="handleTextChange" :label="'내용'" />
 			<PrimaryButton @click="addBoard" button_tag="등록" />
 		</div>
 	</div>
@@ -27,6 +27,10 @@ import { reactive } from 'vue';
 
 function addBoard() {
 	alert(board.content);
+}
+
+function handleTextChange(value) {
+	board.content = value;
 }
 
 function handleSelectChange(value) {
