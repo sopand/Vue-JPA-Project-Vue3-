@@ -8,7 +8,7 @@
 				:select_tag="'카테고리'"
 				@change="handleSelectChange"
 			></SelectBox>
-			<TextEditor v-model="board.content" />
+			<TextEditor v-model="board.content" :label="'내용'" />
 			<PrimaryButton @click="addBoard" button_tag="등록" />
 		</div>
 	</div>
@@ -26,20 +26,25 @@ import PrimaryButton from '@/components/PrimaryButton.vue';
 import { reactive } from 'vue';
 
 function addBoard() {
-	alert(board.type);
+	alert(board.content);
 }
 
 function handleSelectChange(value) {
 	board.type = value;
 }
+
 const selectList = [
 	{
 		name: '공지사항',
-		value: 1,
+		value: '01',
 	},
 	{
 		name: '커뮤니티',
-		value: 2,
+		value: '02',
+	},
+	{
+		name: 'Q&A',
+		value: '03',
 	},
 ];
 const board = reactive({

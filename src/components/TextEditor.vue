@@ -1,38 +1,38 @@
 <template>
 	<div>
-		<label>{{ label }}</label>
-		<QuillEditor :modules="modules" toolbar="full" />
+		<label>{{ props.label }}</label>
+		<QuillEditor
+			:modules="modules"
+			toolbar="full"
+			:content="editContent.text"
+			@update:content="updateContent"
+		/>
 	</div>
 </template>
 <script setup>
 import { reactive } from 'vue';
-import { QuillEditor } from '@vueup/vue-quill';
-import '@vueup/vue-quill/dist/vue-quill.snow.css';
-import ImageUploader from 'quill-image-uploader';
-import axios from 'axios';
+import BlotFormatter from 'quill-blot-formatter';
+import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 
+const props = defineProps(['label']);
+
+const editContent = reactive({
+	text: '',
+});
+
+const updateContent = content => {
+	let converter = new QuillDeltaToHtmlConverter(content.ops, {});
+	let html = converter.convert();
+	console.log(html);
+};
 const modules = {
-	name: 'imageUploader',
-	module: ImageUploader,
+	name: 'blotFormatter',
+	module: BlotFormatter,
+	contentType: 'html',
 	options: {
-		upload: file => {
-			return new Promise((resolve, reject) => {
-				const formData = new FormData();
-				formData.append('image', file);
-
-				axios
-					.post('/upload-image', formData)
-					.then(res => {
-						console.log(res);
-						resolve(res.data.url);
-					})
-					.catch(err => {
-						reject('Upload failed');
-						console.error('Error:', err);
-					});
-			});
-		},
+		/* options */
 	},
 };
 </script>
+
 <style></style>
