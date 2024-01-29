@@ -24,9 +24,19 @@ import InputText from '@/components/InputText.vue';
 import SelectBox from '@/components/SelectBox.vue';
 import PrimaryButton from '@/components/PrimaryButton.vue';
 import { reactive } from 'vue';
+import axios from 'axios';
 
 function addBoard() {
-	alert(board.content);
+	axios
+		.post('/api/board/create', board)
+		.then(({ data }) => {
+			if (data.success) {
+				alert(data.message);
+			}
+		})
+		.catch(error => {
+			alert(error.response.data.message);
+		});
 }
 
 function handleTextChange(value) {
@@ -34,7 +44,7 @@ function handleTextChange(value) {
 }
 
 function handleSelectChange(value) {
-	board.type = value;
+	board.category = value;
 }
 
 const selectList = [
@@ -54,7 +64,7 @@ const selectList = [
 const board = reactive({
 	title: '',
 	content: '',
-	type: '',
+	category: '',
 });
 </script>
 

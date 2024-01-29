@@ -25,6 +25,12 @@ const routes = [
 		name: 'boardAdd',
 		component: () => import('@/views/BoardCreateView.vue'),
 	},
+	{
+		path: '/board/:category',
+		name: 'noticeList',
+		component: () => import('@/views/BoardListView.vue'),
+		props: true,
+	},
 ];
 
 const router = createRouter({

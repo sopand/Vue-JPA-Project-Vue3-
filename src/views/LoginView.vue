@@ -78,7 +78,9 @@ function login() {
 	color: white;
 	font-size: 18px;
 	font-weight: bold;
-	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	border: 1px solid #e2e2e2;
 	background-color: #000000;
 }

@@ -10,10 +10,11 @@
 </template>
 <script setup>
 import { reactive } from 'vue';
-import BlotFormatter from 'quill-blot-formatter';
+import ImageUploader from 'quill-image-uploader';
 import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
-import axios from 'axios';
+// const props = defineProps(['label', 'imageList']);
 const props = defineProps(['label']);
+// const imagelist = reactive(props.imageList);
 const emit = defineEmits(['update:value']);
 const editContent = reactive({
 	text: '',
@@ -26,27 +27,18 @@ const updateContent = content => {
 	emit('update:value', editContent.text);
 };
 const modules = {
-	name: 'blotFormatter',
-	module: BlotFormatter,
-	contentType: 'html',
+	name: 'imageUploader',
+	module: ImageUploader,
 	options: {
-		upload: file => {
-			return new Promise((resolve, reject) => {
-				const formData = new FormData();
-				formData.append('image', file);
-
-				axios
-					.post('/upload-image', formData)
-					.then(res => {
-						console.log(res);
-						resolve(res.data.url);
-					})
-					.catch(err => {
-						reject('Upload failed');
-						console.error('Error:', err);
-					});
-			});
-		},
+		// upload: file => {
+		// 	return new Promise((resolve, reject) => {
+		// 		try {
+		// 			imagelist.push(file);
+		// 		} catch (error) {
+		// 			reject('Failed to upload');
+		// 		}
+		// 	});
+		// },
 	},
 };
 </script>

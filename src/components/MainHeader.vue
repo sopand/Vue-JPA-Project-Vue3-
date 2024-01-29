@@ -61,6 +61,7 @@ function logout() {
 	justify-content: space-evenly;
 	width: 100%;
 }
+
 .menu_list li {
 	list-style-type: none;
 	font-size: 20px;
@@ -68,8 +69,12 @@ function logout() {
 	width: 200px;
 }
 .menu_list li a,
-.tag_box a {
+.tag_box a,
+button {
 	font-weight: bold;
 	color: black;
+}
+button {
+	border: 0;
 }
 </style>
