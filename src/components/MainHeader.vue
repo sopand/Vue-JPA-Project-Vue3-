@@ -7,10 +7,10 @@
 		<LogoCom />
 		<ul class="menu_list">
 			<li>
-				<RouterLink to="/board/notice">Notice</RouterLink>
+				<RouterLink to="/board/01">Notice</RouterLink>
 			</li>
-			<li><RouterLink to="/board/comunity">Comunity</RouterLink></li>
-			<li><RouterLink to="/board/qna">Q&A</RouterLink></li>
+			<li><RouterLink to="/board/02">Comunity</RouterLink></li>
+			<li><RouterLink to="/board/03">Q&A</RouterLink></li>
 			<li><RouterLink to="/proejct">Project</RouterLink></li>
 			<li><RouterLink to="/study">Study</RouterLink></li>
 		</ul>

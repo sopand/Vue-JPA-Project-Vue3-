@@ -5,7 +5,11 @@
 			<LogoCom />
 			<InputText v-model="member.email" :text_tag="'아이디'" />
 			<InputPassword v-model="member.password" :password_tag="'비밀번호'" />
-			<PrimaryButton @click="login" :button_tag="'로그인'" />
+			<PrimaryButton
+				@click="login"
+				:button_tag="'로그인'"
+				:child-width="'350px'"
+			/>
 			<RouterLink to="/member/join">회원가입</RouterLink>
 		</div>
 	</div>

@@ -1,9 +1,9 @@
 <template>
-	<button type="button">{{ button_tag }}</button>
+	<button type="button" :style="{ width: childWidth }">{{ button_tag }}</button>
 </template>
 
 <script setup>
-defineProps({ button_tag: String });
+defineProps({ button_tag: String, childWidth: String });
 </script>
 
 <style scoped>
