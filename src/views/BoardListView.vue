@@ -22,11 +22,13 @@
 			>
 				<div>{{ item.boardSid }}</div>
 				<div>
-					<RouterLink to="/member/join">{{ item.title }}</RouterLink>
+					<RouterLink :to="`/board/detail/${item.boardSid}`">{{
+						item.title
+					}}</RouterLink>
 				</div>
 				<div>{{ item.memberName }}</div>
-				<div>{{ formatDateTimeArray(item.createDate) }}</div>
-				<div>{{ formatDateTimeArray(item.updateDate) }}</div>
+				<div>{{ $formatDateTimeArray(item.createDate) }}</div>
+				<div>{{ $formatDateTimeArray(item.updateDate) }}</div>
 			</article>
 		</section>
 	</main>
@@ -42,8 +44,6 @@ import { onMounted, watch, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
 
-const props = defineProps({ category: String });
-const category = ref('');
 const dataList = ref([]);
 const route = useRoute();
 const search = ref({
@@ -70,36 +70,6 @@ watch(
 		fetchData(newCategory);
 	},
 );
-
-const formatDateTimeArray = dateTimeArray => {
-	// 배열이 유효한지 확인
-	if (Array.isArray(dateTimeArray) && dateTimeArray.length === 7) {
-		const [year, month, day, hours, minutes, seconds, milliseconds] =
-			dateTimeArray;
-
-		const dateObject = new Date(
-			Date.UTC(
-				year,
-				month - 1,
-				day,
-				hours,
-				minutes,
-				seconds,
-				milliseconds / 1e6,
-			),
-		);
-
-		const formattedDate = dateObject
-			.toISOString()
-			.slice(0, 19)
-			.replace('T', ' '); // ISO 8601 형식으로 변환 후 자르기
-
-		return formattedDate;
-	} else {
-		console.error('유효하지 않은 날짜 및 시간 형식:', dateTimeArray);
-		return 'Invalid Date';
-	}
-};
 </script>
 
 <style scoped>

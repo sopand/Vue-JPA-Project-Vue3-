@@ -29,7 +29,11 @@ const routes = [
 		path: '/board/:category',
 		name: 'noticeList',
 		component: () => import('@/views/BoardListView.vue'),
-		props: true,
+	},
+	{
+		path: '/board/detail/:board_sid',
+		name: 'boardDetail',
+		component: () => import('@/views/BoardDetailView.vue'),
 	},
 ];
 
