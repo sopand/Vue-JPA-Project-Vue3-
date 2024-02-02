@@ -5,11 +5,7 @@
 			<LogoCom />
 			<InputText v-model="member.email" :text_tag="'아이디'" />
 			<InputPassword v-model="member.password" :password_tag="'비밀번호'" />
-			<PrimaryButton
-				@click="login"
-				:button_tag="'로그인'"
-				:child-width="'350px'"
-			/>
+			<PrimaryButton @click="login" :button_tag="'로그인'" />
 			<RouterLink to="/member/join">회원가입</RouterLink>
 		</div>
 	</div>
@@ -23,7 +19,7 @@ import FooterCom from '@/components/MainFooter.vue';
 import LogoCom from '@/components/LogoLayout.vue';
 import InputText from '@/components/InputText.vue';
 import InputPassword from '@/components/InputPassword.vue';
-import PrimaryButton from '@/components/PrimaryButton.vue';
+import PrimaryButton from '@/components/ButtonComponent.vue';
 import { RouterLink } from 'vue-router';
 import store from '@/modules/loginStore';
 import axios from 'axios';

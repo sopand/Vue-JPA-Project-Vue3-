@@ -6,6 +6,7 @@
 			id="password_input"
 			:value="props.modelValue"
 			@input="$emit('update:modelValue', $event.target.value)"
+			:style="{ height: childHeight, width: childWidth }"
 		/>
 	</label>
 </template>
@@ -14,6 +15,8 @@
 const props = defineProps({
 	modelValue: String,
 	text_tag: String,
+	childHeight: String,
+	childWidth: String,
 });
 </script>
 
@@ -23,7 +26,6 @@ const props = defineProps({
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	height: 50px;
 }
 .input_tag span {
 	display: flex;

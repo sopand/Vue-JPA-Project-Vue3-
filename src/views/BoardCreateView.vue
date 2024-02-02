@@ -22,7 +22,7 @@ import FooterCom from '@/components/MainFooter.vue';
 import TextEditor from '@/components/TextEditor.vue';
 import InputText from '@/components/InputText.vue';
 import SelectBox from '@/components/SelectBox.vue';
-import PrimaryButton from '@/components/PrimaryButton.vue';
+import PrimaryButton from '@/components/ButtonComponent.vue';
 import { reactive } from 'vue';
 import axios from 'axios';
 

@@ -18,7 +18,7 @@ import HeaderCom from '@/components/MainHeader.vue';
 import FooterCom from '@/components/MainFooter.vue';
 import InputText from '@/components/InputText.vue';
 import InputPass from '@/components/InputPassword.vue';
-import PrimaryButton from '@/components/PrimaryButton.vue';
+import PrimaryButton from '@/components/ButtonComponent.vue';
 import { reactive } from 'vue';
 import router from '@/router';
 import axios from 'axios';

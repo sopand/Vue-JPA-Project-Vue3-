@@ -1,11 +1,14 @@
 <template>
-	<div>
+	<div class="editor_box">
 		<label>{{ props.label }}</label>
-		<QuillEditor
-			:modules="modules"
-			toolbar="full"
-			@update:content="updateContent"
-		/>
+		<div>
+			<QuillEditor
+				style="min-height: 300px"
+				:modules="modules"
+				toolbar="full"
+				@update:content="updateContent"
+			/>
+		</div>
 	</div>
 </template>
 <script setup>
@@ -43,4 +46,17 @@ const modules = {
 };
 </script>
 
-<style></style>
+<style scoped>
+label {
+	width: 70px;
+	font-weight: bold;
+	height: 100%;
+	font-size: 18px;
+}
+.editor_box,
+label {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+</style>

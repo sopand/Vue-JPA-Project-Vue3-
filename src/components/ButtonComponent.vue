@@ -1,9 +1,23 @@
 <template>
-	<button type="button" :style="{ width: childWidth }">{{ button_tag }}</button>
+	<button
+		type="button"
+		:style="{
+			width: childWidth,
+			backgroundColor: childColor,
+			height: childHeight,
+		}"
+	>
+		{{ button_tag }}
+	</button>
 </template>
 
 <script setup>
-defineProps({ button_tag: String, childWidth: String });
+defineProps({
+	button_tag: String,
+	childWidth: String,
+	childColor: String,
+	childHeight: String,
+});
 </script>
 
 <style scoped>
@@ -17,7 +31,6 @@ button {
 	color: white;
 	font-size: 18px;
 	font-weight: bold;
-	margin: 30px 0;
 	border: 1px solid #e2e2e2;
 	background-color: #86a7fc;
 }

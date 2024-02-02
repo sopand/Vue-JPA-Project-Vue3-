@@ -39,7 +39,7 @@
 import HeaderCom from '@/components/MainHeader.vue';
 import FooterCom from '@/components/MainFooter.vue';
 import InputText from '@/components/InputText.vue';
-import PrimaryButton from '@/components/PrimaryButton.vue';
+import PrimaryButton from '@/components/ButtonComponent.vue';
 import { onMounted, watch, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
