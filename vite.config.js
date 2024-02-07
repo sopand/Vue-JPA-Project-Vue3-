@@ -11,7 +11,7 @@ export default defineConfig({
 		proxy: {
 			'/api': {
 				// 요청 전달 대상 서버 주소 설정
-				target: 'http://localhost:8091/',
+				target: 'http://13.209.179.204:8080/',
 			},
 		},
 	},
